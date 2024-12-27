@@ -7,20 +7,21 @@
     
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <script src="scroll.js"></script>
     
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="indexStyles.css">
+    <link rel="stylesheet" href="styles.css">
     <link rel="icon" href="assets/logo.png" type="image/png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
 </head>
 <body>
     <header>
-        <div class="logo">
+        <a href="index.html" class="logo">
             <img src="assets/logo.png" alt="OpenDev Logo" style="height: 30px; vertical-align: middle;">
             OpenDev
-        </div>
+        </a>
         <nav>
-            <a href="#about">About</a>
+            <a href="about.html">About Us</a>
             <a href="#login">Login</a>
             <a href="#signup">Sign Up</a>
         </nav>
@@ -86,6 +87,10 @@
             </form>
         </div>
     </section>
+
+    <footer>
+        <p>&copy; 2024 OpenDev. All rights reserved.</p>
+    </footer>
     
     <script>
         toastr.options = {
@@ -105,38 +110,6 @@
             "showMethod": "fadeIn",
             "hideMethod": "fadeOut"
         };
-        
-        function applyScrollEffects() {
-            const scrollEffects = document.querySelectorAll('.scroll-effect');
-            scrollEffects.forEach(effect => {
-                const rect = effect.getBoundingClientRect();
-                if (rect.top < window.innerHeight) {
-                    effect.classList.add('visible');
-                }
-            });
-
-            const sections = document.querySelectorAll('section');
-            sections.forEach(section => {
-                const rect = section.getBoundingClientRect();
-                if (rect.top < window.innerHeight) {
-                    section.classList.add('visible');
-                }
-            });
-
-            const testimonials = document.querySelectorAll('.testimonial');
-            testimonials.forEach(testimonial => {
-                const rect = testimonial.getBoundingClientRect();
-                if (rect.top < window.innerHeight) {
-                    testimonial.classList.add('visible');
-                }
-            });
-        }
-
-        // Run the scroll effect logic on load
-        window.addEventListener('load', applyScrollEffects);
-
-        // Also run on scroll
-        window.addEventListener('scroll', applyScrollEffects);
 
         let currentImageIndex = 0;
         const slidingImages = document.querySelector('.sliding-images');
