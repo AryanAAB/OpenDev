@@ -75,6 +75,12 @@ section.visible {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
     text-align: center;
+    transition: transform 0.5s ease, box-shadow 0.3s ease;
+}
+
+.contact-container:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
 }
 
 .contact-container h2 {

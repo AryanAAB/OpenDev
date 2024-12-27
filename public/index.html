@@ -4,19 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>OpenDev - Aligning Open Source Goals</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="indexStyles.css">
     
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="indexStyles.css">
+    <link rel="icon" href="assets/logo.png" type="image/png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
 </head>
 <body>
     <header>
-        <div class="logo">OpenDev</div>
+        <div class="logo">
+            <img src="assets/logo.png" alt="OpenDev Logo" style="height: 30px; vertical-align: middle;">
+            OpenDev
+        </div>
         <nav>
             <a href="#about">About</a>
-            <a href="#features">Features</a>
+            <a href="#login">Login</a>
             <a href="#signup">Sign Up</a>
         </nav>
     </header>
@@ -36,7 +41,7 @@
     <section id="about" class="about-section">
         <div class="container">
             <h2>About OpenDev</h2>
-            <p class="mission-statement">At OpenDev, our mission is to <span class="highlight">empower developers</span> by fostering a vibrant open-source ecosystem. We aim to encourage active contributions to open-source projects by offering rewards that recognize and celebrate the efforts of developers.</p>
+            <p class="mission-statement">At OpenDev, our mission is to <span class="highlight">empower developers</span> by fostering a vibrant <span class="highlight">open-source</span> ecosystem. We aim to encourage active contributions to open-source projects by offering rewards that recognize and celebrate the efforts of developers.</p>
             <p class="mission-statement">Through collaboration, we strive to enhance the developer community, improve software innovation, and create a more inclusive environment where everyone can enjoy better services. By incentivizing open-source participation, we envision a world where developers are <span class="highlight">motivated</span>, <span class="highlight">connected</span>, and continuously advancing the future of technology.</p>
         </div>
     </section>
@@ -101,7 +106,7 @@
             "hideMethod": "fadeOut"
         };
         
-        window.addEventListener('scroll', () => {
+        function applyScrollEffects() {
             const scrollEffects = document.querySelectorAll('.scroll-effect');
             scrollEffects.forEach(effect => {
                 const rect = effect.getBoundingClientRect();
@@ -109,7 +114,29 @@
                     effect.classList.add('visible');
                 }
             });
-        });
+
+            const sections = document.querySelectorAll('section');
+            sections.forEach(section => {
+                const rect = section.getBoundingClientRect();
+                if (rect.top < window.innerHeight) {
+                    section.classList.add('visible');
+                }
+            });
+
+            const testimonials = document.querySelectorAll('.testimonial');
+            testimonials.forEach(testimonial => {
+                const rect = testimonial.getBoundingClientRect();
+                if (rect.top < window.innerHeight) {
+                    testimonial.classList.add('visible');
+                }
+            });
+        }
+
+        // Run the scroll effect logic on load
+        window.addEventListener('load', applyScrollEffects);
+
+        // Also run on scroll
+        window.addEventListener('scroll', applyScrollEffects);
 
         let currentImageIndex = 0;
         const slidingImages = document.querySelector('.sliding-images');
@@ -120,25 +147,6 @@
             currentImageIndex = (currentImageIndex + 1) % totalImages;
             slidingImages.style.transform = `translateX(-${currentImageIndex * 100}%)`;
         }, 3000);
-
-        window.addEventListener('scroll', () => {
-            const sections = document.querySelectorAll('section');
-            sections.forEach(section => {
-                const rect = section.getBoundingClientRect();
-                if (rect.top < window.innerHeight) {
-                    section.classList.add('visible');
-                }
-            });
-
-            // Scroll effects for testimonials
-            const testimonials = document.querySelectorAll('.testimonial');
-            testimonials.forEach(testimonial => {
-                const rect = testimonial.getBoundingClientRect();
-                if (rect.top < window.innerHeight) {
-                    testimonial.classList.add('visible');
-                }
-            });
-        });
 
         document.getElementById('contactForm').addEventListener('submit', async function (event) {
             event.preventDefault();
