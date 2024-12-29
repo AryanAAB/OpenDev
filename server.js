@@ -7,7 +7,7 @@ const nodemailer = require('nodemailer');
 
 dotenv.config();
 const app = express();
-const port = 3000;
+const port = 3001;
 
 // Middleware
 app.use(bodyParser.json());
