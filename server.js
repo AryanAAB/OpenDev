@@ -66,14 +66,15 @@ app.get('/', (req, res) => {
 app.get('/login', passport.authenticate('azuread-openidconnect', { failureRedirect: '/' }));
 
 app.post(
-  '/auth/callback',
-  passport.authenticate('azuread-openidconnect', {
-    failureRedirect: '/home.html',
-  }),
-  (req, res) => {
-    res.redirect('/'); // Redirect to home.html after successful login
-  }
-);
+    '/auth/callback',
+    passport.authenticate('azuread-openidconnect', {
+      failureRedirect: '/',
+      failureMessage: true,  // Enable failure messages
+    }),
+    (req, res) => {
+      res.redirect('/home.html'); // Redirect to home.html after successful login
+    }
+  );
 
 app.get('/logout', (req, res) => {
   req.logout((err) => {
