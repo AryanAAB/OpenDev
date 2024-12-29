@@ -64,6 +64,13 @@ app.get('/', (req, res) => {
 });
 
 app.get('/login', passport.authenticate('azuread-openidconnect', { failureRedirect: '/' }));
+app.get(
+    '/signup',
+    passport.authenticate('azuread-openidconnect', {
+      failureRedirect: '/',
+      customState: 'signup', // Optional: to distinguish between login and signup
+    })
+);
 
 app.post(
     '/auth/callback',
