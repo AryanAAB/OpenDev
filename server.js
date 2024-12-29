@@ -1,30 +1,16 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const sql = require('mssql');
-const bcrypt = require('bcrypt');
 const dotenv = require('dotenv');
 const nodemailer = require('nodemailer');
 
 dotenv.config();
 const app = express();
-const port = 3001;
+const port = process.env.PORT;
 
 // Middleware
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static('public'));
-
-// Database configuration
-const dbConfig = {
-    user: process.env.DB_USER,
-    password: process.env.DB_PASSWORD,
-    server: process.env.DB_SERVER,
-    database: process.env.DB_NAME,
-    options: {
-        encrypt: true, // For Azure SQL
-        trustServerCertificate: true
-    }
-};
 
 app.post('/send-email', async (req, res) => {
     const { name, email, message } = req.body;
