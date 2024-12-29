@@ -23,7 +23,7 @@ const b2cConfig = {
   redirectUrl: process.env.B2C_REDIRECT_URI,
   allowHttpForRedirectUrl: false,
   scope: ['openid', 'profile', 'email'],
-  loggingLevel: 'info',
+  loggingLevel: 'debug',
 };
 
 // Middleware for sessions
