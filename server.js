@@ -4,7 +4,7 @@ const OIDCStrategy = require('passport-azure-ad').OIDCStrategy;
 const session = require('express-session');
 const path = require('path');
 const nodemailer = require('nodemailer');
-require('dotenv').config(); // Load environment variables from a .env file
+require('dotenv').config();
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -29,7 +29,7 @@ const b2cConfig = {
 // Middleware for sessions
 app.use(
   session({
-    secret: 'random_secret_key',
+    secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: true,
   })
@@ -68,10 +68,10 @@ app.get('/login', passport.authenticate('azuread-openidconnect', { failureRedire
 app.post(
   '/auth/callback',
   passport.authenticate('azuread-openidconnect', {
-    failureRedirect: '/',
+    failureRedirect: '/home.html',
   }),
   (req, res) => {
-    res.redirect('/home.html'); // Redirect to home.html after successful login
+    res.redirect('/'); // Redirect to home.html after successful login
   }
 );
 
