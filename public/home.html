@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>OpenDev - Aligning Open Source Goals</title>
     
+    <script src="fetchRepo.js"></script>
+
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
@@ -20,10 +22,11 @@
 
     <section id="dashboard" class="dashboard-section">
         <div class="container">
-            <h2>GitHub Repositories Dashboard</h2>
-            <input type="text" id="username" placeholder="Enter GitHub Username" required>
-            <button id="fetchRepos">Fetch Repositories</button>
-            <div id="repos"></div>
+            <h1>GitHub Repositories</h1>
+            <p id="message">Loading...</p>
+            <ul id="repo-list"></ul>
+            <button onclick="fetchRepositories()">Refresh Repositories</button>
+            <button onclick="window.location.href='/profile'">Profile</button>
         </div>
     </section>
 
@@ -58,40 +61,5 @@
             <p>&copy; 2024 OpenDev. All rights reserved.</p>
         </div>
     </footer>
-
-    <script>
-        document.getElementById('fetchRepos').addEventListener('click', async function () {
-            const username = document.getElementById('username').value;
-            if (!username) {
-                alert('Please enter a GitHub username');
-                return;
-            }
-
-            const reposContainer = document.getElementById('repos');
-            reposContainer.innerHTML = 'Loading...';
-
-            try {
-                const response = await fetch(`https://api.github.com/users/${username}/repos`);
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
-                const repos = await response.json();
-                reposContainer.innerHTML = '';
-
-                repos.forEach(repo => {
-                    const repoElement = document.createElement('div');
-                    repoElement.classList.add('repo');
-                    repoElement.innerHTML = `
-                        <h3><a href="${repo.html_url}" target="_blank">${repo.name}</a></h3>
-                        <p>${repo.description || 'No description available'}</p>
-                    `;
-                    reposContainer.appendChild(repoElement);
-                });
-            } catch (error) {
-                reposContainer.innerHTML = 'Error fetching repositories';
-                console.error('Error fetching repositories:', error);
-            }
-        });
-    </script>
 </body>
 </html>
