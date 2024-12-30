@@ -1,0 +1,71 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f9;
+}
+
+.dashboard-section {
+    padding: 40px 20px;
+    background-color: #ffffff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+h1 {
+    font-size: 2.5em;
+    color: #333333;
+    margin-bottom: 20px;
+}
+
+#message {
+    font-size: 1.2em;
+    color: #666666;
+    margin-bottom: 20px;
+}
+
+#repo-list {
+    list-style: none;
+    padding: 0;
+    margin: 20px 0;
+}
+
+#repo-list li {
+    margin: 10px 0;
+    font-size: 1.1em;
+}
+
+#repo-list a {
+    color: #1a73e8;
+    text-decoration: none;
+}
+
+#repo-list a:hover {
+    text-decoration: underline;
+}
+
+button {
+    background-color: #1a73e8;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1em;
+    cursor: pointer;
+    border-radius: 5px;
+    margin: 10px 5px;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #155ab6;
+}
+
+button:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(26, 115, 232, 0.3);
+}
