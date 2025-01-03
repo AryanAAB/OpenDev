@@ -1,0 +1,139 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+#container {
+    width: 1920px;
+    height: 942px;
+    background-color: #181818;
+}
+
+#header {
+    width: 1920px;
+    height: 90px;
+    flex-shrink: 0;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#header img {
+    width: 66px;
+    height: 48.5px;
+    padding-left: 30px;
+    flex-shrink: 0;
+}
+
+#header h1 {
+    width: 204px;
+    padding-right: 883px;
+
+    font-family: Inter;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+
+    background: linear-gradient(84deg, #FFF 21.3%, #434343 96.52%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+#signup-form {
+    display: flex;
+    width: 353px;
+    padding: 10px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 36px;
+
+    margin-left: 371px;
+    margin-top: 142px;
+}
+
+#signup-form #form-header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 6px;
+    align-self: stretch;
+
+    color: #FFF;
+    font-family: Inter;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+#signup-form #form-header h1 {
+    color: #FFF;
+    font-family: Inter;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+#signpup-form .input {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+    align-self: stretch;
+}
+
+#signpup-form .label {
+    align-self: stretch;
+
+    color: #FFF;
+    font-family: Inter;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+#signpup-form .input-box {
+    display: flex;
+    height: 20px;
+    padding: 14px 10px;
+    align-items: center;
+    gap: 10px;
+    align-self: stretch;
+
+    border-radius: 8px;
+    border: 2px solid #FFF;
+    background-color: transparent;
+
+    color: #FFF;
+    font-family: Inter;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+#signpup-form .input-box::placeholder {
+    color: #919191;
+}
+
+#signpup-form .error-message {
+    display: flex;
+    height: 24px;
+    flex-direction: column;
+    justify-content: center;
+    align-self: stretch;
+
+    color: #FFF;
+    font-family: Inter;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}

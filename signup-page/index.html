@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+</html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup Page</title>
+
+    <!-- importing font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+
+<body>
+    <div id="container">
+        <div id="header">
+            <img src="../assets/logo.png" id="logo">
+            <h1>OpenDev</h1>
+        </div>
+
+        <div id="signup-form">
+            <div id="form-header">
+                <h1>Sign up to OpenDev</h1>
+                * Required
+            </div>
+
+            <div id="email-username-input" class="input">
+                <div id="label" class="label">Email or username*</div>
+                <input type="text" id="email-username-input-box" class="input-box"
+                    placeholder="Enter email or username">
+                <div id="email-username-error-message" class="error-message">Error</div>
+            </div>
+
+            <div id="password-input" class="input">
+                <div id="label" class="label">Password*</div>
+                <input type="text" id="password-input-box" class="input-box" placeholder="Enter password">
+                <div id="password-error-message" class="error-message">Error</div>
+            </div>
+
+            <div id="confrim-password-input" class="input">
+                <div id="label" class="label">Confirm Password*</div>
+                <input type="text" id="password-input-box" class="input-box" placeholder="Enter password">
+                <div id="confirm-password-error-message" class="error-message">Error</div>
+            </div>
+
+            <button id="singup-button">Sign Up</button>
+
+            <div id="footer">
+                Have an account? <span class="underline">Log in!</span>
+            </div>
+        </div>
+</body>
