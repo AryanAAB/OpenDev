@@ -28,6 +28,8 @@ def getDifficulty(text):
         return parts[1].strip()  # Return the second part (difficulty)
     return "Unknown"  # Fallback if the difficulty is missing
 
+# NEED TO CHANGE THIS ACCORDING TO THE FINAL FORMULA
+
 def getCompensation(time, difficulty):
     if(difficulty=="Easy"):
         return time*1
@@ -54,13 +56,18 @@ client = AzureOpenAI(
     azure_endpoint=azure_endpoint,
 )
 
-# Use the davinci-002 model with the completions API
+
+print("Enter the prompt: ")
+prompt=input()
+
+# Using the babbage-002 model as it is cheapest and sufficient for this task
 completion = client.completions.create(
-    model="babbage-002-ft-731da07e706f48e0847d4b1164548ea3",  # Use davinci-002 for completions (not chat)
-    prompt="Build an interactive dashboard in React for displaying real-time analytics data, utilizing WebSocket connections for live updates. The dashboard should support custom visualizations and allow users to filter and analyze data. The project also includes writing unit and integration tests for the components.",
+    model="babbage-002-ft-731da07e706f48e0847d4b1164548ea3",  # deployment name of the model
+    prompt=prompt,
     max_tokens=4,  # Adjust as needed
     temperature=0.7,  # Adjust temperature for randomness
 )
+
 
 # Print the response in JSON format
 response=completion.to_json()
