@@ -183,6 +183,15 @@ def get_comment_text(comment_url):
         print(f"Failed to fetch comment: {response.status_code} - {response.text}")
 
 
+def extract_info_from_url(url):
+    """Extract the owner, repo name, and pull number from the provided URL."""
+    parts = url.split('/')
+    owner = parts[3]
+    repo = parts[4]
+    pull_number = parts[6].split('#')[0]
+    return owner, repo, pull_number
+
+
 if __name__ == "__main__":
     print("Fetching the no of stars")
     print_stars()
@@ -198,18 +207,22 @@ if __name__ == "__main__":
     check_user_pull_request(9185, "SyedNaveedM")
     check_user_pull_request(9185, "Pwuts")
 
-
-    print()
     print("-"*50)
     
     print("Checking if the pull request is created after 31st December 2024")
     get_pull_request_timestamp(9097)
 
-    print()
     print("-"*50)
 
     print("Fetching the text of the comment containing the description of the pull request")
     get_comment_text("https://github.com/Significant-Gravitas/AutoGPT/pull/9185#issue-2767614409")
+
+    print("-"*50)
+
+    print("Extracting owner, repo, and pull number from the URL")
+    url = "https://github.com/nomic-ai/gpt4all/pull/2750#issuecomment-2262853272"
+    owner, repo, pull_number = extract_info_from_url(url)
+    print(f"Owner: {owner}, Repo: {repo}, Pull Number: {pull_number}")
 
 
 
