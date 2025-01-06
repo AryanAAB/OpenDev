@@ -31,13 +31,18 @@ def getDifficulty(text):
 # NEED TO CHANGE THIS ACCORDING TO THE FINAL FORMULA
 
 def getCompensation(time, difficulty):
+    ans = getPreScaledCompensation(time, difficulty)
+    ans = ans * min(1.5, getScaleFactor())
+    return ans
+
+
+def getPreScaledCompensation(time, difficulty):
     if(difficulty=="Easy"):
         return time*1
     elif(difficulty=="Medium"):
         return time*3
     elif(difficulty=="Hard"):
         return time*5
-
 
 # Set the API version for Azure OpenAI
 api_version = "2023-07-01-preview"

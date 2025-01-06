@@ -83,9 +83,10 @@ def print_forks():
     if response.status_code == 200:
         repo_data = response.json()['forks_count']
         print(f"Forks count: {repo_data}")
+        return repo_data
     else:
         print("Failed to fetch forks count:", response.json())
-
+        return 0
 
 # function to get the no of stars from the repository
 def print_stars():
@@ -95,9 +96,17 @@ def print_stars():
     if response.status_code == 200:
         repo_data = response.json()['stargazers_count']
         print(f"Stars: {repo_data}")
+        return repo_data
     else:
         print("Failed to fetch forks count:", response.json())
+        return 0
     
+
+def getScalingFactor():
+    ans = print_stars()//250 + print_forks()//10
+    if(ans>3):
+        return 0.3 + ans*0.1
+    return ans*0.1
 
 # function to check if the pull request is merged or not
 def get_pull_request_state(pull_number):
